@@ -9,14 +9,14 @@ autoload -U colors && colors
 autoload -U compinit
 zstyle ":completion:*" menu select
 
-source "$XDG_CONFIG_HOME/zsh/antigen.zsh"
+source "$ZDOTDIR/antigen.zsh"
 	antigen bundle zsh-users/zsh-syntax-highlighting
 	antigen bundle unixorn/autoupdate-antigen.zshplugin
 	antigen bundle zsh-users/zsh-autosuggestions
 	antigen bundle zsh-users/zsh-completions
 	antigen bundle jeffreytse/zsh-vi-mode
 	antigen bundle hlissner/zsh-autopair
-	# antigen bundle zdharma/fast-syntax-highlighting
+	antigen bundle zdharma/fast-syntax-highlighting
 	#antigen bundle Aloxaf/fzf-tab
 antigen apply
 
@@ -40,8 +40,9 @@ SAVEHIST=69420
 # LS_COLORS="fi=0;35:di=1;31:ex=4;36"
 
 # theme: nature
-# PS1="%F{green}%B<%b%F{cyan}%n%F{green}%\@%F{cyan}%m %F{yellow}%~%F{green}%B>%b%F{yellow}%B$%b%f "
-PS1=" %F{yellow}%~%F{green}%B>%b%F{yellow}%B$%b%f "
+USER_PROMPT="%F{green}%B<%b%F{cyan}%n%F{green}%\@%F{cyan}%m"
+PS1="$USER_PROMPT %F{yellow}%~%F{green}%B>%b%F{yellow}%B$%b%f "
+# PS1=" %F{yellow}%~%F{green}%B>%b%F{yellow}%B$%b%f "
 LS_COLORS="fi=0;36:di=1;32:ex=4;33"
 
 LC_ALL=C cowsay $(fortune) | lolcat

@@ -20,26 +20,17 @@ static const unsigned int alpha = 0xFF;
 
 
 static const char worddelimiters[] = "";
-
-/* Tokyonight */
-/* static const char *colors[SchemeLast][2] = { */
-/*								/1*     fg         bg       *1/ */
-/* 	[SchemeNorm]	=	{	"#dd7186",	"#1d1f21"	}, */
-/* 	[SchemeSel]		=	{	"#222222",	"#a48add"	}, */
-/* 	[SchemeOut]		=	{	"#000000",	"#00ffff"	}, */
-/* }; */
-/* Nature */
-/* static const char *colors[SchemeLast][2] = { */
-/* 							/1*     fg         bg       *1/ */
-/* 	[SchemeNorm]	=	{	"#566349",	"#222222"	}, */
-/* 	[SchemeSel]		=	{	"#222222",	"#67c394"	}, */
-/* 	[SchemeOut]		=	{	"#000000",	"#00ffff"	}, */
-/* }; */
+static const int theme = 1;
+/* Tokyonight  Nature     Gold */
+/* "#dd7186", "#566349", "#444444"; */
+/* "#1d1f21", "#222222", "#222222"; */
+/* "#222222", "#222222", "#222222"; */
+/* "#a48add", "#67c394", "#ffbe3c"; */
 
 static const char *colors[SchemeLast][2] = {
-							/*     fg         bg       */
-	[SchemeNorm]	=	{	"#444444",	"#222222"	},
-	[SchemeSel]		=	{	"#222222",	"#ffbe3c"	},
+							    /* fg         bg */
+	[SchemeNorm]	=	{	"#566349" ,		"#222222" },
+	[SchemeSel]		=	{	"#222222" , "#67c394"  	},
 	[SchemeOut]		=	{	"#000000",	"#00ffff"	},
 };
 
