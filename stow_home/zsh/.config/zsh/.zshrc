@@ -16,8 +16,8 @@ source "$ZDOTDIR/antigen.zsh"
 	antigen bundle zsh-users/zsh-completions
 	antigen bundle jeffreytse/zsh-vi-mode
 	antigen bundle hlissner/zsh-autopair
-	antigen bundle zdharma/fast-syntax-highlighting
-	#antigen bundle Aloxaf/fzf-tab
+	# antigen bundle zdharma/fast-syntax-highlighting
+	antigen bundle Aloxaf/fzf-tab
 antigen apply
 
 source "$XDG_CONFIG_HOME/zsh/aliases.zsh"
@@ -36,14 +36,21 @@ HISTSIZE=69420
 SAVEHIST=69420
 
 # theme: tokyonight
+# COLOR_USER="%F{red}"
+# COLOR_BRACKETS="%F{magenta}"
+# COLOR_PATH="%F{red}"
 # PS1="%F{red}%B<%b%F{magenta}%n%F{red}%\@%F{magenta}%m %F{red}%~%F{red}%B>%b%F{magenta}%B$%b%f "
 # LS_COLORS="fi=0;35:di=1;31:ex=4;36"
 
 # theme: nature
-USER_PROMPT="%F{green}%B<%b%F{cyan}%n%F{green}%\@%F{cyan}%m"
-PS1="$USER_PROMPT %F{yellow}%~%F{green}%B>%b%F{yellow}%B$%b%f "
-# PS1=" %F{yellow}%~%F{green}%B>%b%F{yellow}%B$%b%f "
+COLOR_USER="%F{cyan}"
+COLOR_BRACKETS="%F{green}"
+COLOR_PATH="%F{yellow}"
 LS_COLORS="fi=0;36:di=1;32:ex=4;33"
+
+USER_PROMPT="$COLOR_USER%n$COLOR_BRACKETS@$COLOR_USER%m"
+PS1="$COLOR_BRACKETS<$USER_PROMPT $COLOR_PATH%~$COLOR_BRACKETS>$COLOR_PATH%B$%b%f "
+
 
 LC_ALL=C cowsay $(fortune) | lolcat
 # neofetch

@@ -11,4 +11,5 @@ $ cat ../packages | yay -S --needed -
 ```
 ### Important:
 
-'hardware_settings' contains files specific to my old-ass GPU and Monitor setup.
+'*hardware_settings*' contains files specific to my old-ass GPU and Monitor setup.
+
