@@ -2,7 +2,7 @@
 
 typeset -U PATH path
 
-export PATH=$PATH:$HOME/scripts/:$HOME/scripts/system-info/:$HOME/.local/bin:/usr/bin/python3
+export PATH=$PATH:$HOME/scripts/:$HOME/scripts/system-info/:$HOME/scripts/tmux/:$HOME/scripts/dmenu/:$HOME/scripts/other/:$HOME/.local/bin:/usr/bin/python3
 
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
