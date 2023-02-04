@@ -1,13 +1,14 @@
 #!/bin/sh
 
-sxhkd &
+remaps.sh &
+wallpaper.sh &
+flameshot &
+# firefox &
+
 dunst &
 picom -b &
+sxhkd &
 
-flameshot &
-firefox &
-wallpaper.sh &
-remaps.sh &
 
 exec awesome
 

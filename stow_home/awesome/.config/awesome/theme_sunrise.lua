@@ -17,7 +17,9 @@ theme.border_width          = dpi(1)
 
 local primary_sel           = "#d78821" -- Bright Yellow
 local primary_norm          = "#444444"
-local background            = "#222222"
+
+-- local background            = "#222222"
+local background            = "#1a1b26"
 
 -- Borders
 theme.border_focus          = primary_sel
@@ -49,7 +51,7 @@ theme.taglist_squares_sel   = primary_norm
 theme.bg_systray            = background
 
 
-theme.tasklist_disable_task_name = { true }
+-- theme.tasklist_disable_task_name = { false }
 
 
 -- There are other variable sets

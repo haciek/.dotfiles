@@ -22,16 +22,3 @@ alias suspend="systemctl suspend"
 alias reboot="systemctl reboot"
 alias poweroff="systemctl poweroff"
 
-# ~ < unused > ~
-# alias scr="$HOME/doc/scripts"
-# alias notes="$HOME/doc/notes"
-# alias files="$HOME/doc/files"
-# alias latex="$HOME/doc/latex"
-# alias code="$HOME/doc/code"
-# alias pdfs="$HOME/doc/pdfs"
-# alias pics="$HOME/doc/pics"
-# alias vids="$HOME/doc/vids"
-# alias dl="$HOME/doc/dl"
-# alias vf='vifm'
-# alias R="sudo ranger"
-# alias alpine="alpine -p ~/.config/alpine/.pinerc"

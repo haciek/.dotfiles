@@ -10,25 +10,37 @@ local theme = {}
 
 theme.font          = "FiraCode Light 9"
 
+local background    = "#1a1b26"
+local primary_sel   = "#a48add" -- Bright Yellow
+local primary_norm  = "#444444"
+
 theme.useless_gap   = dpi(5)
-theme.border_width  = dpi(2)
+theme.border_width  = dpi(1)
 
-theme.border_focus  = "#a48add"
-theme.bg_urgent     = "#dd7186"
-theme.bg_normal     = "#1d1f21"
-theme.bg_minimize   = "#444444"
+theme.border_focus          = primary_sel
+theme.border_normal         = primary_norm
+theme.border_marked         = "#91231c" -- Default
+-- Taskbar
+theme.bg_normal             = background
+theme.bg_focus              = primary_sel
+-- theme.bg_minimize           = primary_norm
+theme.bg_minimize           = background
+theme.bg_urgent             = "#dd7186" -- Default // Red
 
-theme.fg_focus      = "#222222"
-theme.border_marked = "#91231c"
-theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
+theme.fg_normal             = primary_sel
+theme.fg_focus              = background
+-- theme.fg_minimize           = background
+theme.fg_minimize           = primary_norm
+theme.fg_urgent             = "#ffffff" -- Default
 
-theme.taglist_squares_unsel = theme.bg_urgent
-theme.tasklist_bg_focus     = theme.border_focus
-theme.bg_focus              = theme.tasklist_bg_focus
-theme.fg_normal             = theme.bg_urgent
-theme.bg_systray            = theme.bg_normal
-theme.border_normal         = theme.bg_minimize
+theme.tasklist_bg_focus     = background
+theme.tasklist_bg_normal    = background
+theme.tasklist_fg_focus     = primary_sel
+theme.tasklist_fg_normal    = primary_norm
+-- Tags
+theme.taglist_squares_unsel = primary_sel
+theme.taglist_squares_sel   = primary_norm
+theme.bg_systray            = background
 
 -- There are other variable sets
 -- overriding the default one when

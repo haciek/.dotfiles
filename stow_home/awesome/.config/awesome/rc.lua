@@ -10,12 +10,7 @@ local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 
-local spotify_shell = require("awesome-wm-widgets.spotify-shell.spotify-shell")
-
-
 -- {{{ Error handling
--- Check if awesome encountered an error during startup and fell back to
--- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
    naughty.notify({ preset = naughty.config.presets.critical,
          title = "Oops, there were errors during startup!",
@@ -39,11 +34,8 @@ end
 -- }}}
 
 -- {{{ Variable definitions
--- Themes define colours, icons, font and wallpapers.
--- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 local themes = { "theme_nature.lua", "theme_tokyonight.lua", "theme_sunrise.lua" };
-beautiful.init(gears.filesystem.get_configuration_dir() .. themes[1] )
--- beautiful.init(gears.filesystem.get_configuration_dir() .. "theme_tokyonight.lua")
+beautiful.init(gears.filesystem.get_configuration_dir() .. themes[3] )
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -51,10 +43,6 @@ editor = os.getenv("EDITOR") or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
--- Usually, Mod4 is the key with a logo between Control and Alt.
--- If you do not like this or do not have such a key,
--- I suggest you to remap Mod4 to another key using xmodmap or other tools.
--- However, you can use another modifier like Mod1, but it may interact with others.
 modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
@@ -160,8 +148,11 @@ local tasklist_buttons = gears.table.join(
    end
 
    -- Each screen has its own tag table.
-   awful.tag({ '1', '2', '3', '4', '5', '6', '7', '8', '9'}, 1, awful.layout.layouts[1])
-   awful.tag({ '1', '2', '3', '4', '5', '6', '7', '8', '9'}, 2, awful.layout.layouts[2])
+   awful.screen.connect_for_each_screen(function (s)
+      awful.tag({ '1', '2', '3', '4', '5', '6', '7', '8', '9'}, s, awful.layout.layouts[1])
+   end)
+   -- awful.tag({ '1', '2', '3', '4', '5', '6', '7', '8', '9'}, 1, awful.layout.layouts[1])
+   -- awful.tag({ '1', '2', '3', '4', '5', '6', '7', '8', '9'}, 2, awful.layout.layouts[2])
    -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
    screen.connect_signal("property::geometry", set_wallpaper)
 
@@ -211,17 +202,21 @@ local tasklist_buttons = gears.table.join(
          { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
-            wibox.widget.textbox('|'),
+            -- wibox.widget.textbox('|'),
             awful.widget.watch('bash -c "weather.sh"', 1800),
-            wibox.widget.textbox('|'),
+            -- wibox.widget.textbox('|'),
+            awful.widget.watch('bash -c "bluetooth.sh"', 30),
             awful.widget.watch('bash -c "updates.sh"', 3600),
-            wibox.widget.textbox('|'),
-            awful.widget.watch('bash -c "memory-ram.sh"', 2),
-            awful.widget.watch('bash -c "cpu-usage.sh"', 2),
-            wibox.widget.textbox('|'),
+            -- wibox.widget.textbox('|'),
+            -- awful.widget.watch('bash -c "memory-ram.sh"', 2),
+            awful.widget.watch('bash -c "hardware-data.sh"', 2),
+            -- wibox.widget.textbox('|'),
+            awful.widget.watch('bash -c "battery.sh"', 2),
+            -- wibox.widget.textbox('|'),
             awful.widget.watch('bash -c "network.sh"', 2),
-            wibox.widget.textbox('|'),
-            mytextclock,
+            -- wibox.widget.textbox('|'),
+            awful.widget.watch('bash -c "date.sh"', 60),
+            -- mytextclock,
             wibox.widget.systray(),
             wibox.widget.textbox(' '),
             s.mylayoutbox,
@@ -230,7 +225,7 @@ local tasklist_buttons = gears.table.join(
    end)
    -- }}}
 
-   local function layout_dvorak(is_dvorak)
+   local function layout_kbd(is_dvorak)
       local globalkeys;
       if (is_dvorak == true) then
          globalkeys = gears.table.join(
@@ -306,7 +301,7 @@ local tasklist_buttons = gears.table.join(
             awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
                {description = "select previous", group = "layout"}),
 
-            awful.key({ modkey, "Control" }, "m",
+            awful.key({ modkey, }, "0",
                function ()
                   local c = awful.client.restore()
                   -- Focus restored client
@@ -385,14 +380,14 @@ local tasklist_buttons = gears.table.join(
                {description = "go back", group = "client"}),
 
             -- Standard program
-            awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
+            awful.key({ modkey,           }, "Return", function () awful.spawn(terminal)end,
                {description = "open a terminal", group = "launcher"}),
             awful.key({ modkey, "Control" }, "r", awesome.restart,
                {description = "reload awesome", group = "awesome"}),
             awful.key({ modkey, "Shift"   }, "q", awesome.quit,
                {description = "quit awesome", group = "awesome"}),
-            awful.key({ modkey,				}, "s", function () spotify_shell.launch() end,
-               {description = "spotify shell", group = "music"}),
+            -- awful.key({ modkey,				}, "s", function () spotify_shell.launch() end,
+            --    {description = "spotify shell", group = "music"}),
 
 
             awful.key({ modkey,           }, ".",     function () awful.tag.incmwfact( 0.05)          end,
@@ -447,7 +442,7 @@ local tasklist_buttons = gears.table.join(
       return globalkeys;
    end
 
-   globalkeys = layout_dvorak(true);
+   globalkeys = layout_kbd(true);
 
    -- {{{ Mouse bindings
    root.buttons(gears.table.join(

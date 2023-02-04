@@ -35,25 +35,9 @@ autosuggestions="true"
 HISTSIZE=69420
 SAVEHIST=69420
 
-# theme: tokyonight
-# COLOR_USER="%F{red}"
-# COLOR_BRACKETS="%F{magenta}"
-# COLOR_PATH="%F{red}"
-# PS1="%F{red}%B<%b%F{magenta}%n%F{red}%\@%F{magenta}%m %F{red}%~%F{red}%B>%b%F{magenta}%B$%b%f "
-# LS_COLORS="fi=0;35:di=1;31:ex=4;36"
-
-# theme: nature
-COLOR_USER="%F{cyan}"
-COLOR_BRACKETS="%F{green}"
-COLOR_PATH="%F{yellow}"
-LS_COLORS="fi=0;36:di=1;32:ex=4;33"
-
-USER_PROMPT="$COLOR_USER%n$COLOR_BRACKETS@$COLOR_USER%m"
-PS1="$COLOR_BRACKETS<$USER_PROMPT $COLOR_PATH%~$COLOR_BRACKETS>$COLOR_PATH%B$%b%f "
-
-
-LC_ALL=C cowsay $(fortune) | lolcat
+# themes: tokyonight (1), nature (2), sunrise (3)
+source "$XDG_CONFIG_HOME/zsh/themes.zsh" 3
+# LC_ALL=C cowsay $(fortune) | lolcat
 # neofetch
-# eval "$(starship init zsh)"
 
 [ "$(tty)" = "/dev/tty1" ] && exec startx

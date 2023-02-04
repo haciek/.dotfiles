@@ -2,7 +2,7 @@
 
 typeset -U PATH path
 
-export PATH=$PATH:$HOME/scripts/:$HOME/scripts/status/:$HOME/.local/bin:/usr/bin/python3
+export PATH=$PATH:$HOME/scripts/:$HOME/scripts/system-info/:$HOME/.local/bin:/usr/bin/python3
 
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
@@ -21,7 +21,7 @@ export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export GTK_THEME='Adwaita:dark'
 export LANG='en_US.UTF-8'
 export EDITOR='nvim'
-export BROWSER='qutebrowser'
+export BROWSER='firefox'
 export TERMINAL='alacritty'
 export READER='zathura'
 export PLAYER='mpv'
