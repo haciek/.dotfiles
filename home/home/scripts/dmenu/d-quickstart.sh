@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-programs=("$BROWSER" "discord" "spotify" "steam-native")
-selected=$(echo "${programs[@]}" | sed "s/\s/\n/g" - | dmenu -p "Quick start:")
+path=$(realpath "$0")
+dir=$(dirname "$path")
+file="$dir/files/quickstart"
 
-eval "$selected" & disown
+selected=$(dmenu -p "Quickstart:" < "$file")
 
-# if [[ $(echo "${programs[@]}" | grep -q "$selected" -) ]]; then
-# 	eval "$selected" & disown
-# fi
+[ "$selected" == "" ] && exit 1
+"$selected" && notify-send "Starting: $selected"

@@ -13,7 +13,7 @@ mntpt=$(echo "$dirs" | dmenu -p "Mount to:")
 [ -z "$mntpt" ] && exit 1
 
 [ ! -d "$mntpt" ] \
-    && makedir=$(echo "Make\nAbort" | dmenu -p "$mntpt doesn't exist.") && \
+    && makedir=$(printf "Make\nAbort" | dmenu -p "$mntpt doesn't exist.") && \
     [ "$makedir" = "Make" ] && sudo mkdir -p "$mntpt"
 
 sudo -S mount "$select" "$mntpt" \

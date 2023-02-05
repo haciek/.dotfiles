@@ -1,35 +1,20 @@
 #!/bin/bash
 
-file="$HOME/.bookmarks"
-opt=( "Open-Bookmark" "Add-Bookmark" "Delete-Bookmark" )
-sel=$(echo "${opt[@]}" | sed "s/\s/\n/g" - | dmenu -p "Select:")
+path=$(realpath "$0")
+dir=$(dirname "$path")
+file="$dir/files/bookmarks"
 
-open() {
-    url=$(cat "$file" | dmenu -p "Bookmark:" )
-    [ "$url" == "" ] && exit 1
-    eval "$BROWSER" "$url";
-}
-add() {
-    url_new=$(dmenu  -p "Enter URL: ")
-    [ "$url_new" == "" ] && exit 1
-    echo "$url_new" | sed "s/\(http.*:\/\/\|.*www\.\)//" - >> "$file"
-    notify-send "Bookmark added: $url_new"
-}
-del() {
-    file_tmp="$HOME/.bookmarks_tmp"
-    url=$(cat "$file" | dmenu -p "Bookmark:")
-    sed -i "s/$url//" "$file" && notify-send "Bookmark delted: $url"
-    for line in $(cat "$file")
-    do
-        [ "$line" == "" ] && continue
-        echo "$line" >> "$file_tmp"
-    done
-    eval mv -f "$file_tmp" "$file"
+declare -A bookmarks
 
-}
-case "$sel" in
-    ${opt[0]}) open ;;
-    ${opt[1]}) add ;;
-    ${opt[2]}) del ;;
+while read -r name url
+do
+    bookmarks["$name"]="$url"
+done < "$file"
 
-esac
+selected=$(echo "${!bookmarks[@]}" | sed 's/\s/\n/g' - | dmenu)
+
+[ "$selected" == "Modify" ] && "$TERMINAL" -e "$EDITOR" "$path" && exit 0
+[ "$selected" == ""       ] && exit 0
+
+link="${bookmarks["$selected"]}"
+"$BROWSER" "$link"
