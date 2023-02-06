@@ -1,5 +1,5 @@
 #!/bin/sh
 
-wttr=$(curl -s wttr.in/\?format="%c+%t" 2>&1 | sed 's/\ //' 2&>1 /dev/null )
+wttr=$(curl -s wttr.in/\?format="%c+%t" 2> /dev/null | sed 's/\ //' )
 [ -n "$wttr" ] && echo " $wttr "
 

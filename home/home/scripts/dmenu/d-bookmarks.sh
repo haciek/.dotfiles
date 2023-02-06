@@ -13,7 +13,7 @@ done < "$file"
 
 selected=$(echo "${!bookmarks[@]}" | sed 's/\s/\n/g' - | dmenu)
 
-[ "$selected" == "Modify" ] && "$TERMINAL" -e "$EDITOR" "$path" && exit 0
+[ "$selected" == "Modify" ] && "$TERMINAL" -e "$EDITOR" "$file" && exit 0
 [ "$selected" == ""       ] && exit 0
 
 link="${bookmarks["$selected"]}"
