@@ -3,10 +3,10 @@ static int topbar = 1;
 static int min_width = 500;
 
 
-static int centered = 1;
-static unsigned int lines = 10;
-static const unsigned int border_width = 1;
-static const char *prompt = "Launch: " ;
+static int centered = 0;
+static unsigned int lines = 0;
+static const unsigned int border_width = 0;
+static const char *prompt = "" ;
 static const char *fonts[] = { "FiraCode Light:size=13:antialias=true:autohint=true" };
 static const unsigned int alpha = 0xFF;
 
