@@ -36,8 +36,9 @@ HISTSIZE=69420
 SAVEHIST=69420
 
 # themes: tokyonight (1), nature (2), sunrise (3)
-source "$XDG_CONFIG_HOME/zsh/themes.zsh" 3
+source "$XDG_CONFIG_HOME/zsh/themes.zsh" 1
 # LC_ALL=C cowsay $(fortune) | lolcat
 # neofetch
 
-[ "$(tty)" = "/dev/tty1" ] && exec startx
+# [ "$(tty)" = "/dev/tty1" ] && exec startx
+eval "$(starship init zsh)"
